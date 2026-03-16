@@ -1,0 +1,27 @@
+File Path,Category,Description
+app.py,Flask application,Main server application with SocketIO for real-time AR navigation
+config.py,Configuration,"Network, model, and application configuration settings"
+requirements.txt,Dependencies,Python packages required for the application
+utils/model_handler.py,AI Model Handler,"Loads and manages your trained models (H5, ONNX, TFLite)"
+utils/qr_generator.py,QR Code Generator,Creates QR codes for building entrances
+routes/main_routes.py,Web Routes,Handles web page routing and navigation
+routes/api_routes.py,API Routes,REST API endpoints for model predictions
+templates/index.html,Landing Page,Main page with destination selection
+templates/navigation.html,AR Navigation,Camera interface with AR overlay
+templates/destination_select.html,Destination Page,Destination selection interface
+static/css/style.css,Styles,Mobile-first responsive CSS with AR interface styling
+static/js/main.js,Main JavaScript,Core application functionality and system management
+static/js/camera.js,Camera Handler,Manages mobile camera access and frame capture
+static/js/ar-navigation.js,AR Controller,Real-time AR navigation with model integration
+deployment/setup.bat,Windows Setup,Automated setup script for Windows systems
+deployment/start_server.bat,Server Startup,Starts the Flask server with network configuration
+deployment/network_config.py,Network Config,Configures network settings for college WiFi
+DEPLOYMENT_GUIDE.md,Setup Guide,Complete deployment instructions with troubleshooting
+utils/__init__.py,Python Package,Makes utils directory a Python package
+routes/__init__.py,Python Package,Makes routes directory a Python package
+,,
+=== YOUR MODEL FILES (Required) ===,,
+models/Indoor_model.h5,TensorFlow Model,Your trained Keras/TensorFlow model
+models/Indoor_model.onnx,ONNX Model,Your trained ONNX model (alternative)
+models/Indoor_model.tflite,TensorFlow Lite,Your trained TFLite model (mobile optimized)
+models/labels.json,Model Labels,Class labels for your trained model

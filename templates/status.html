@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status – Indoor Navigation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body { background: #f4f6fa; font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #1565C0; }
+        .status-grid {
+            display: flex; flex-wrap: wrap; gap: 16px;
+            justify-content: center; max-width: 700px; margin: 30px auto;
+        }
+        .card {
+            background: #fff; border-radius: 12px; padding: 20px 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); min-width: 200px;
+        }
+        .card h3 { margin: 0 0 10px; color: #555; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; }
+        .value { font-size: 22px; font-weight: 700; color: #1565C0; }
+        .badge {
+            display: inline-block; padding: 4px 12px; border-radius: 20px;
+            font-size: 13px; font-weight: 600;
+        }
+        .badge.ok  { background: #e8f5e9; color: #2e7d32; }
+        .badge.err { background: #ffebee; color: #c62828; }
+        .back-link {
+            display: block; text-align: center; margin-bottom: 20px;
+            color: #1565C0; text-decoration: none; font-size: 14px;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        td { padding: 6px 10px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+        td:first-child { color: #888; width: 40%; }
+    </style>
+</head>
+<body>
+    <a class="back-link" href="/">← Back to Home</a>
+    <h1>⚙️ System Status</h1>
+
+    <div class="status-grid">
+        <div class="card">
+            <h3>ML Model</h3>
+            <span class="badge {{ 'ok' if model_status.loaded else 'err' }}">
+                {{ '✅ Loaded' if model_status.loaded else '❌ Not Loaded' }}
+            </span>
+            <table>
+                <tr><td>Type</td><td>{{ model_status.type or '—' }}</td></tr>
+                <tr><td>Labels</td><td>{{ model_status.labels_count }}</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>Server</h3>
+            <span class="badge ok">✅ Running</span>
+            <table>
+                <tr><td>Host</td><td>{{ config.HOST }}</td></tr>
+                <tr><td>Port</td><td>{{ config.PORT }}</td></tr>
+                <tr><td>Debug</td><td>{{ config.DEBUG }}</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>Configuration</h3>
+            <table>
+                <tr><td>Entrances</td><td>{{ config.ENTRANCE_COUNT }}</td></tr>
+                <tr><td>Destinations</td><td>{{ config.DESTINATIONS | length }}</td></tr>
+                <tr><td>Camera</td><td>{{ config.CAMERA_WIDTH }}×{{ config.CAMERA_HEIGHT }}</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

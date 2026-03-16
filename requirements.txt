@@ -1,0 +1,14 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+opencv-python
+onnxruntime
+numpy
+Pillow
+qrcode
+python-socketio
+Flask-SocketIO
+eventlet
+requests
+gunicorn
+pyOpenSSL
+python-dotenv

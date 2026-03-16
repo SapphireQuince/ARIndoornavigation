@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Select Destination</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <button class="back-button" onclick="history.back()">← Back</button>
+      <h1>Select Destination</h1>
+      <p class="subtitle">Where would you like to go?</p>
+    </header>
+
+    <div class="entrance-info">
+      <p>Starting from: <strong>Entrance {{ entrance_id }}</strong></p>
+    </div>
+
+    <div class="destinations-list">
+      {% for dest in map_keys %}
+      <a href="{{ url_for('main.navigate', destination=dest, entrance=entrance_id) }}" class="destination-item">
+        <div class="destination-icon">
+          {% if 'stairs' in dest|lower %}
+            ⬆️
+          {% elif 'corridor' in dest|lower %}
+            🚶
+          {% elif 'lift' in dest|lower %}
+            🛗
+          {% elif 'entrance' in dest|lower %}
+            🚪
+          {% elif 'hod' in dest|lower or 'cell' in dest|lower %}
+            📝
+          {% elif 'cabin' in dest|lower %}
+            🧑‍💼
+          {% else %}
+            🏢
+          {% endif %}
+        </div>
+        <div class="destination-details">
+          <h3>{{ dest }}</h3>
+          <p>Go to {{ dest }}</p>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

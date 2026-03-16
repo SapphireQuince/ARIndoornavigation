@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AR Navigation - {{ destination }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+</head>
+<body class="ar-mode">
+
+    <header class="ar-header">
+        <button class="back-btn" onclick="window.history.back()">
+            ← Back
+        </button>
+        <div class="destination-info">
+            <span class="label">Navigating to:</span>
+            <span class="value">{{ destination }}</span>
+        </div>
+    </header>
+
+    <div id="camera-container">
+        <video id="camera" autoplay playsinline muted></video>
+        <canvas id="overlay-canvas"></canvas>
+    </div>
+
+    <div id="ar-ui-layer">
+        <div id="direction-arrow"></div>
+
+        <div id="instruction-text" class="instruction-normal">Point camera at hallway</div>
+
+        <div class="status-container">
+            <div id="connection-status">
+                <span class="status-dot"></span>
+                <span>Connecting...</span>
+            </div>
+
+            <div class="confidence-container">
+                <span>Confidence:</span>
+                <div class="progress">
+                    <div id="confidence-fill" class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <span id="confidence-value">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-screen" class="overlay-screen">
+        <div class="loader"></div>
+        <div class="loading-steps">
+            <div class="step" id="step-camera">Accessing Camera...</div>
+            <div class="step" id="step-connection">Connecting to Server...</div>
+            <div class="step" id="step-ready">Starting Navigation...</div>
+        </div>
+    </div>
+
+    <div id="error-screen" class="overlay-screen hidden">
+        <div class="error-content">
+            <span class="error-icon">⚠️</span>
+            <h2>Navigation Error</h2>
+            <p id="error-message">Something went wrong.</p>
+            <div class="error-actions">
+                <button id="retry-btn" class="btn primary">Retry</button>
+                <button id="back-error-btn" class="btn secondary">Go Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ar-navigation.js') }}"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = new ARNavigation({
+                destination: "{{ destination }}",
+                entranceId: "{{ entrance_id }}",
+                serverUrl: window.location.origin
+            });
+            nav.initialize();
+        });
+    </script>
+</body>
+</html>

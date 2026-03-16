@@ -1,0 +1,78 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Indoor Navigation QR Codes</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            .qr-container { 
+                display: flex; 
+                flex-wrap: wrap; 
+                gap: 20px; 
+                justify-content: center;
+            }
+            .qr-card { 
+                border: 2px solid #333; 
+                padding: 20px; 
+                text-align: center;
+                margin: 10px;
+                page-break-inside: avoid;
+            }
+            .qr-card img { 
+                max-width: 300px; 
+                height: auto;
+            }
+            .qr-title { 
+                font-size: 24px; 
+                font-weight: bold; 
+                margin: 10px 0;
+            }
+            .qr-url { 
+                font-size: 12px; 
+                color: #666; 
+                word-break: break-all;
+            }
+            @media print {
+                .qr-card { page-break-inside: avoid; }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Indoor Navigation System - QR Codes</h1>
+        <p>Print and place these QR codes at the respective entrances</p>
+        <div class="qr-container">
+    
+            <div class="qr-card">
+                <div class="qr-title">Entrance 1</div>
+                <img src="entrance_1.png" alt="QR Code for Entrance 1">
+                <div class="qr-url">https://192.168.1.100:5000/?entrance=1</div>
+            </div>
+        
+            <div class="qr-card">
+                <div class="qr-title">Entrance 2</div>
+                <img src="entrance_2.png" alt="QR Code for Entrance 2">
+                <div class="qr-url">https://192.168.1.100:5000/?entrance=2</div>
+            </div>
+        
+            <div class="qr-card">
+                <div class="qr-title">Entrance 3</div>
+                <img src="entrance_3.png" alt="QR Code for Entrance 3">
+                <div class="qr-url">https://192.168.1.100:5000/?entrance=3</div>
+            </div>
+        
+            <div class="qr-card">
+                <div class="qr-title">Entrance 4</div>
+                <img src="entrance_4.png" alt="QR Code for Entrance 4">
+                <div class="qr-url">https://192.168.1.100:5000/?entrance=4</div>
+            </div>
+        
+            <div class="qr-card">
+                <div class="qr-title">Entrance 5</div>
+                <img src="entrance_5.png" alt="QR Code for Entrance 5">
+                <div class="qr-url">https://192.168.1.100:5000/?entrance=5</div>
+            </div>
+        
+        </div>
+    </body>
+    </html>
+    

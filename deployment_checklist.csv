@@ -1,0 +1,11 @@
+Task,Status,Notes
+1. Create project folder,❌,Create 'indoor_navigation_webapp' folder
+2. Copy all provided files,❌,Extract all files to project folder
+3. Copy model files to models/,❌,"Copy Indoor_model.h5, .onnx, .tflite, labels.json"
+4. Install Python dependencies,❌,Run: pip install -r requirements.txt
+5. Configure network settings,❌,Run: python deployment/network_config.py
+6. Start the server,❌,Run: python app.py
+7. Generate QR codes,❌,QR codes auto-generated in qr_codes/ folder
+8. Print and place QR codes,❌,Print qr_codes_print.html and place at entrances
+9. Test mobile access,❌,Scan QR codes with mobile devices
+10. Test AR navigation,❌,Verify camera access and model predictions
